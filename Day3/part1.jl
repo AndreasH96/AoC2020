@@ -21,7 +21,7 @@ function takeStep(map,position)
             global treeCount += 1
         end
         takeStep(map,position + stepSize)
-    catch 
+    catch
         return
     end
 end
