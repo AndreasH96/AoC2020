@@ -31,7 +31,7 @@ function validPassword(passwordDict)
     return false
 
 end
-end
+
 
 
 passwords = readfile("input.txt")

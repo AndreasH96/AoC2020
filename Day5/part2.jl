@@ -1,18 +1,14 @@
 using Printf
 function extractPosition(boardingPass)
-    possibleRows = [0:1:127;]
-    possibleColumns = [0:1:8;]
+    rowBin = ""
+    colBin = ""
     for character in boardingPass[1:7]
-        middleRow = Int(floor(length(possibleRows)/2))
-        #Split to lower part if 'F' and upper half if 'B'
-        possibleRows = character == 'F' ? possibleRows[1:middleRow] : possibleRows[middleRow+1:length(possibleRows)]
+        rowBin *= character == 'F' ? "0" : "1"
     end
     for character in boardingPass[8:10]
-        middleCol = Int(floor(length(possibleColumns)/2))
-        #Split to lower part if 'L' and upper half if 'R'
-        possibleColumns = character == 'L' ? possibleColumns[1:middleCol] : possibleColumns[middleCol+1:length(possibleColumns)]
+        colBin *= character == 'L' ? "0" : "1"
     end
-    return possibleRows[1],possibleColumns[1]
+    return parse(Int,rowBin;base=2),parse(Int,colBin;base=2)
 end
 rowIDs = []
 data = readlines(open("input.txt","r"))
