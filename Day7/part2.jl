@@ -30,7 +30,8 @@ function countBags(bagType,isTest = true,testFile = 1)
     end
     return bagAmount
 end
-@testset
+@testset "Test data control" begin
     @test countBags("shiny gold",true,1)-1 == 32
     @test countBags("shiny gold",true,2)-1 == 126
+end
 @printf("Amount of bags: %d",countBags("shiny gold",false)-1)
